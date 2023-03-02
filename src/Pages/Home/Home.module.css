@@ -1,0 +1,11 @@
+.HomeContent {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10rem 2rem;
+  gap: 2.5rem;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}

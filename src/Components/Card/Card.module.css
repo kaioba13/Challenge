@@ -1,0 +1,33 @@
+.container {
+  max-width: 1200px;
+  padding: 0 2rem;
+  margin: 0 auto;
+}
+.title {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 2.4rem;
+  line-height: auto;
+}
+.description {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: auto;
+}
+#button {
+  border: none;
+  background-color: #1c1919;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: auto;
+}
+
+#button:hover {
+  opacity: 0.9;
+  transition: 0.2s;
+}
