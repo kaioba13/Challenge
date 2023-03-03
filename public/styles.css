@@ -11,3 +11,11 @@
 img {
   max-width: 100%;
 }
+
+.back-to-top {
+  position: fixed;
+  z-index: 999;
+  bottom: 2rem;
+  right: 1rem;
+  display: none;
+}

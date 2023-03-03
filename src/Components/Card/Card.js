@@ -1,25 +1,51 @@
 import React from "react";
-import styles from "./Card.module.css";
-import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import styles from "./Card.module.css";
+import noImg from "../../assets/no_image";
+
+import { useState } from "react";
+import Button from "react-bootstrap/Button";
 
 export default function CardContent({ data, ...rest }) {
   return (
-    <Card style={{ width: "35rem" }} {...rest}>
-      <Card.Img variant="top" src={data.featured_media?.large} />
+    <Card style={{ width: "35rem", height: "40rem" }} {...rest}>
+      {data.featured_media?.large ? (
+        //Variação de imagem com ternario
+        <Card.Img
+          variant="top"
+          style={{ objectFit: "cover", height: "23.2rem" }}
+          src={data.featured_media?.large}
+        />
+      ) : (
+        <Card.Img
+          variant="top"
+          style={{ objectFit: "cover", height: "23.2rem" }}
+          src={noImg}
+        />
+      )}
       <Card.Body>
         <Card.Title className={styles.title}>{data.title}</Card.Title>
         <Card.Text className={styles.description}>
           {data.categories[0].description}
         </Card.Text>
-        <Button
-          href={data.link}
-          id={styles.button}
-          variant="primary"
-          target="_blank"
+        <div
+          style={{
+            position: "absolute",
+            bottom: "0",
+            left: "0",
+            margin: "50px 10px 10px 10px",
+          }}
+          className="divBtn"
         >
-          Lea mas
-        </Button>
+          <Button
+            href={data.link}
+            id={styles.button}
+            variant="primary"
+            target="_blank"
+          >
+            Lea mas
+          </Button>
+        </div>
       </Card.Body>
     </Card>
   );
