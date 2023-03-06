@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import imgTop from "../../assets/voltar_topo";
+import imgTop from "../../assets/arrowtop.png";
 
 function BackToTop() {
   useEffect(() => {

@@ -25,39 +25,6 @@ export default function Home() {
     loadPosts();
   }, []);
 
-  document.addEventListener("DOMContentLoaded", function () {
-    const backToTopLink = document.createElement("a");
-    backToTopLink.href = "#";
-    backToTopLink.className = "back-to-top";
-
-    const backToTopImg = document.createElement("img");
-    backToTopImg.src = "../../assets/voltar_topo";
-
-    backToTopLink.appendChild(backToTopImg);
-    document.body.appendChild(backToTopLink);
-
-    function toTop() {
-      window.addEventListener("scroll", function () {
-        if (window.scrollY > 400) {
-          backToTopLink.style.display = "block";
-        } else {
-          backToTopLink.style.display = "none";
-        }
-      });
-
-      backToTopLink.addEventListener("click", function (event) {
-        event.preventDefault();
-
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
-      });
-    }
-
-    toTop();
-  });
-
   return (
     <div className={styles.container}>
       <Header />
