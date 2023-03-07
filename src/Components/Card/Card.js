@@ -5,8 +5,37 @@ import noImg from "../../assets/no_image";
 
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
+import { CardImg } from "react-bootstrap";
 
-export default function CardContent({ data, ...rest }) {
+export default function CardContent({ data, abc, ...rest }) {
+  if (abc) {
+    const result = data.sidebar.widgets[4].content;
+    console.log(result);
+    return (
+      <div>
+        {result.map((item) => {
+          return (
+            <Card style={{ width: "35rem", height: "40rem" }}>
+              <Card.Title className={styles.title}>{item.title}</Card.Title>
+              <CardImg src={item.featured_media.medium} />
+
+              <Card.Text className={styles.description}>
+                {item.headline}
+              </Card.Text>
+              <Button
+                href={`/Details/${data.id}/${item.id}`}
+                id={styles.button}
+                variant="primary"
+                target="_blank"
+              >
+                Lea mas
+              </Button>
+            </Card>
+          );
+        })}
+      </div>
+    );
+  }
   return (
     <Card style={{ width: "35rem", height: "40rem" }} {...rest}>
       {data.featured_media?.large ? (

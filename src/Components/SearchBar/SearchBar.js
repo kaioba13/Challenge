@@ -26,7 +26,11 @@ export default function SearchBar({ data }) {
         <div className={styles.dataResult}>
           {filterData.map((value, key) => {
             return (
-              <a className={styles.dataItem} href="/Details" target={"_blank"}>
+              <a
+                className={styles.dataItem}
+                href={"/Details/" + value.id}
+                target={"_blank"}
+              >
                 <p>{value.slug}</p>
               </a>
             );

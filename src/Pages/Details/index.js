@@ -1,22 +1,24 @@
 import axios from "axios";
 import React from "react";
 import { useState, useEffect } from "react";
-import Card from "react-bootstrap/Card";
+import { useParams } from "react-router-dom";
+import Card from "../../Components/Card/Card";
 import noImg from "../../assets/no_image";
 import styles from "./Details.module.css";
 import Button from "react-bootstrap/Button";
 
 export default function Details() {
-  const [contents, setContent] = useState([]);
+  const [contents, setContent] = useState(null);
+  const { id } = useParams();
 
   async function loadContent() {
     try {
       const response = await axios.get(
-        "https://api.beta.mejorconsalud.com/wp-json/mc/v1/categories/salud"
+        `https://api.beta.mejorconsalud.com/wp-json/mc/v1/categories/${id}`
       );
-      debugger;
+
       const data = response.data;
-      console.log(data.metas.title);
+
       setContent(data);
     } catch (error) {
       console.log(error);
@@ -27,12 +29,12 @@ export default function Details() {
   }, []);
 
   return (
-    <div className={styles.container}>
-      <h2>{contents.metas.title}</h2>
-      <p>{contents.metas.description}</p>
+    <div>
+      {contents ? <Card abc={true} data={contents} /> : <div>Nada</div>}
     </div>
   );
 }
+
 /*
 const [contents, setContent] = useState([]);
 
@@ -61,4 +63,6 @@ return (
     </main>
   </div>
 );
+
+{contents.metas ? <h2>{contents.metas.title}</h2> : <div>Nada</div>}
 */
