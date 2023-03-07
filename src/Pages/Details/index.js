@@ -18,7 +18,7 @@ export default function Details() {
       );
 
       const data = response.data;
-
+      console.log(data);
       setContent(data);
     } catch (error) {
       console.log(error);
@@ -30,39 +30,20 @@ export default function Details() {
 
   return (
     <div>
-      {contents ? <Card abc={true} data={contents} /> : <div>Nada</div>}
+      {contents ? (
+        <main className={styles.content}>
+          <div className={styles.contentDescription}>
+            <h2>{contents.name}</h2>
+            <p>{contents.description}</p>
+          </div>
+
+          <div className={styles.contentCard}>
+            <Card abc={true} data={contents} />
+          </div>
+        </main>
+      ) : (
+        <div>Carregando...</div>
+      )}
     </div>
   );
 }
-
-/*
-const [contents, setContent] = useState([]);
-
-async function loadContent() {
-  try {
-    const response = await axios.get(
-      "https://api.beta.mejorconsalud.com/wp-json/mc/v1/categories/salud"
-    );
-    const data = response.data;
-
-    setContent(data);
-    console.log(data.sidebar.widgets[4].content);
-  } catch (error) {
-    console.log(error);
-  }
-}
-useEffect(() => {
-  loadContent();
-}, []);
-return (
-  <div>
-    <main>
-      {contents.map((content) => (
-        <Card key={String(content.id)} data={content} />
-      ))}
-    </main>
-  </div>
-);
-
-{contents.metas ? <h2>{contents.metas.title}</h2> : <div>Nada</div>}
-*/
